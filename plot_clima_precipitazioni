@@ -1,0 +1,12 @@
+  png(file=paste("Precipitazione media mensile e annuale_Milano Brera.png"),width=1440,height=900)
+  bplot_mediamesi <-barplot(prec_med, main = paste("Precipitazioni medie mensili 1981-2010 \nStazione di Milano Brera"), font.main = 7, cex.main = 1.5,
+  plot = TRUE, xlab = "Mesi",ylab = "Precipitazioni (mm)", font.lab = 7, cex.lab=1.5, ylim = c(0,max_val), border = T, axes = FALSE, col= "cyan2",names.arg = mesin)
+  axis(side = 2)
+  abline(h = seq(0,200,50), col = 'lightgray', lty = 3)
+  par(new=TRUE) #Inserimento due plot insieme
+  plot(1:12,cum_annua, type="l", col="red", axes=F, xlab=NA, ylab=NA, ylim = c(0,1200), cex=1.2, lwd=2)
+  axis(side = 4, at = c(200,400,600,800,1000,1200), tick = TRUE,)
+  text(x = 12, y = cum_annua[12] + 30,  labels = paste(as.character(cum_annua[12]),"mm"), col="red", cex = 1.2)
+  #Legenda grafico numero giorni con precipitazioni
+  legend("top",legend="Cumulata media annua", cex=1.2, lty = 1, col = "red", lwd = 2, bty = "n")
+  legend("topleft",legend="Cumulata media mensile", cex=1.2, fill="cyan2", box.lty = o, bty = "n")
